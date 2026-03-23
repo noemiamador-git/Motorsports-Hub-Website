@@ -1,13 +1,15 @@
 :root {
-  --bg: #07111f;
-  --panel: rgba(13, 29, 49, 0.9);
-  --panel-strong: #102238;
-  --text: #f5f7fb;
-  --muted: #a7b6ca;
-  --accent: #ff5b2e;
-  --accent-alt: #00d1ff;
-  --border: rgba(255, 255, 255, 0.1);
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --bg: #f6f6f6;
+  --surface: #ffffff;
+  --surface-alt: #111111;
+  --surface-muted: #1b1b1b;
+  --text: #111111;
+  --text-light: #ffffff;
+  --muted: #5a5a5a;
+  --accent: #e10600;
+  --accent-dark: #b50400;
+  --border: #d9d9d9;
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -20,24 +22,55 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Barlow', sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(0, 209, 255, 0.18), transparent 28%),
-    linear-gradient(180deg, #07111f 0%, #0b1627 50%, #050a13 100%);
+  font-family: 'Inter', sans-serif;
   color: var(--text);
+  background:
+    linear-gradient(135deg, rgba(225, 6, 0, 0.08) 0 18%, transparent 18% 100%),
+    linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    -62deg,
+    transparent 0 85px,
+    rgba(225, 6, 0, 0.045) 85px 95px
+  );
+  opacity: 0.7;
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   min-height: 100vh;
   padding: 1.5rem clamp(1.25rem, 3vw, 3rem) 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background:
+    linear-gradient(115deg, rgba(225, 6, 0, 0.98) 0 32%, rgba(18, 18, 18, 0.98) 32% 100%);
+  color: var(--text-light);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -5% 7% 45%;
+  height: 170px;
+  background: repeating-linear-gradient(
+    -12deg,
+    rgba(255, 255, 255, 0.9) 0 12px,
+    transparent 12px 26px
+  );
+  opacity: 0.24;
+  transform: skewX(-18deg);
 }
 
 .topbar,
 .section,
 .footer {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -48,12 +81,31 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.22);
+}
+
+.brand,
+.nav-links a,
+.eyebrow,
+.live-label,
+.button,
+.series-tag,
+.stat-label,
+.driver-number,
+.race-date,
+.driver-series,
+h1,
+h2,
+h3 {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.03em;
 }
 
 .brand {
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .nav-links {
@@ -63,27 +115,31 @@ body {
 }
 
 .nav-links a {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
+  font-size: 1rem;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  color: var(--text-light);
 }
 
 .hero-content {
-  max-width: 720px;
-  padding: 5rem 0 3rem;
+  max-width: 800px;
+  padding: 5rem 0 2rem;
 }
 
 .eyebrow,
 .live-label {
+  display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.75rem;
-  color: var(--accent-alt);
-  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  background: var(--accent);
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.35rem;
 }
 
 h1,
@@ -94,14 +150,24 @@ p {
 }
 
 h1 {
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  line-height: 0.95;
-  margin: 0.6rem 0 1.25rem;
+  font-size: clamp(3.5rem, 10vw, 6.4rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  margin: 0.9rem 0 1.2rem;
 }
 
 h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.35rem, 6vw, 3.8rem);
+  text-transform: uppercase;
+  line-height: 0.95;
   margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.8rem;
 }
 
 .hero-copy,
@@ -110,25 +176,65 @@ h2 {
 .driver-card p,
 .highlight-card p,
 .footer p {
-  color: var(--muted);
-  line-height: 1.6;
+  color: inherit;
+  line-height: 1.65;
+  max-width: 60ch;
 }
 
-.hero-actions {
+.hero-copy {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.05rem;
+}
+
+.hero-actions,
+.hero-stats {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.hero-actions {
   margin-top: 2rem;
 }
 
+.hero-stats {
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  min-width: 180px;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.1rem;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .button {
-  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
   border-radius: 999px;
-  padding: 0.95rem 1.4rem;
+  padding: 0.95rem 1.45rem;
   cursor: pointer;
   text-decoration: none;
-  font-weight: 700;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .button:hover {
@@ -136,14 +242,19 @@ h2 {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--accent), #ff8c32);
-  color: white;
+  background: var(--text-light);
+  color: var(--accent);
 }
 
 .button-secondary {
   background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
+  color: var(--text-light);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+  position: relative;
+  z-index: 1;
 }
 
 .section {
@@ -151,12 +262,22 @@ h2 {
 }
 
 .section-dark {
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, #161616 0%, #0f0f0f 100%);
+  color: var(--text-light);
 }
 
 .section-heading {
-  max-width: 700px;
+  max-width: 760px;
   margin-bottom: 2.5rem;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.section-dark .section-heading p,
+.section-dark .driver-card p {
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .race-grid,
@@ -170,49 +291,67 @@ h2 {
 .race-card,
 .driver-card,
 .highlight-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 1.5rem;
+  border-radius: 1.5rem;
+  padding: 1.6rem;
   box-shadow: var(--shadow);
 }
 
+.race-card,
+.highlight-card {
+  background: var(--surface);
+  border-top: 6px solid var(--accent);
+}
+
+.driver-card {
+  background: linear-gradient(180deg, #232323 0%, #111111 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .featured-race {
-  background: linear-gradient(145deg, rgba(255, 91, 46, 0.18), rgba(13, 29, 49, 0.95));
+  background: linear-gradient(145deg, rgba(225, 6, 0, 0.08), rgba(255, 255, 255, 1));
 }
 
 .series-tag {
   display: inline-flex;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(255, 91, 46, 0.16);
-  color: #ffb49e;
-  font-size: 0.85rem;
-  font-weight: 700;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
-.series-tag.indycar {
-  background: rgba(0, 209, 255, 0.16);
-  color: #9ceeff;
-}
-
+.series-tag.indycar,
 .series-tag.endurance {
-  background: rgba(172, 255, 94, 0.14);
-  color: #d4ffab;
+  background: var(--accent);
 }
 
 .race-date,
 .driver-series {
-  font-weight: 700;
-  color: #dfe7f2;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.driver-series {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .driver-number {
-  font-size: 0.9rem;
-  color: var(--accent-alt);
+  display: inline-flex;
+  padding: 0.35rem 0.65rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  color: var(--text-light);
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+.highlight-card p,
+.race-card p {
+  color: var(--muted);
 }
 
 .live-highlight {
@@ -220,11 +359,29 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  background: linear-gradient(115deg, #111111 0%, #2a2a2a 100%);
+  color: var(--text-light);
+}
+
+.live-highlight p,
+.live-highlight h3 {
+  color: var(--text-light);
+}
+
+.live-highlight .button-primary {
+  background: var(--accent);
+  color: var(--text-light);
 }
 
 .footer {
-  padding: 0 1.25rem 2rem;
+  position: relative;
+  z-index: 1;
+  padding: 0 1.25rem 2.5rem;
   text-align: center;
+}
+
+.footer p {
+  color: var(--muted);
 }
 
 @media (max-width: 700px) {
@@ -236,5 +393,21 @@ h2 {
 
   .hero {
     min-height: auto;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 18vw, 4.8rem);
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-stats {
+    width: 100%;
+  }
+
+  .stat-card {
+    width: 100%;
   }
 }
