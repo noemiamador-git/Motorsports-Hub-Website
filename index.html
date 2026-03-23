@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Motorsports Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">🏁 Motorsports Hub</div>
+        <div class="nav-links">
+          <a href="#races">Races</a>
+          <a href="#drivers">Drivers</a>
+          <a href="#highlights">Highlights</a>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="eyebrow">Fast news. Big weekends. Race-day energy.</p>
+        <h1>Your home for the latest on the racing world.</h1>
+        <p class="hero-copy">
+          Explore upcoming race weekends, learn about standout drivers, and catch
+          the top headlines from Formula 1, IndyCar, and endurance racing.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#races">View Race Calendar</a>
+          <a class="button button-secondary" href="#drivers">Meet the Drivers</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="races">
+        <div class="section-heading">
+          <p class="eyebrow">Upcoming races</p>
+          <h2>Next weekends to watch</h2>
+          <p>
+            A quick look at marquee events across major motorsports series so you
+            never miss lights out.
+          </p>
+        </div>
+
+        <div class="race-grid">
+          <article class="race-card featured-race">
+            <span class="series-tag">Formula 1</span>
+            <h3>Japanese Grand Prix</h3>
+            <p class="race-date">April 6 • Suzuka Circuit • Suzuka, Japan</p>
+            <p>
+              A legendary high-speed challenge known for technical corners,
+              fearless commitment, and huge championship implications.
+            </p>
+          </article>
+
+          <article class="race-card">
+            <span class="series-tag indycar">IndyCar</span>
+            <h3>Acura Grand Prix of Long Beach</h3>
+            <p class="race-date">April 13 • Long Beach Street Circuit • California, USA</p>
+            <p>
+              Tight concrete walls, heavy braking zones, and one of the most iconic
+              street races in North America.
+            </p>
+          </article>
+
+          <article class="race-card">
+            <span class="series-tag endurance">WEC</span>
+            <h3>6 Hours of Imola</h3>
+            <p class="race-date">April 20 • Autodromo Enzo e Dino Ferrari • Imola, Italy</p>
+            <p>
+              Hypercars return to a historic venue where tire strategy and traffic
+              management can decide the podium.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="drivers">
+        <div class="section-heading">
+          <p class="eyebrow">Driver info</p>
+          <h2>Featured drivers</h2>
+          <p>
+            These racers bring pace, personality, and championship ambitions into
+            every weekend.
+          </p>
+        </div>
+
+        <div class="driver-grid">
+          <article class="driver-card">
+            <div class="driver-number">01</div>
+            <h3>Max Verstappen</h3>
+            <p class="driver-series">Formula 1 • Red Bull Racing</p>
+            <p>
+              Known for relentless speed and race craft, Verstappen remains the
+              benchmark in modern grand prix racing.
+            </p>
+          </article>
+
+          <article class="driver-card">
+            <div class="driver-number">02</div>
+            <h3>Josef Newgarden</h3>
+            <p class="driver-series">IndyCar • Team Penske</p>
+            <p>
+              A proven oval and road-course specialist with a knack for delivering
+              under pressure in the biggest moments.
+            </p>
+          </article>
+
+          <article class="driver-card">
+            <div class="driver-number">03</div>
+            <h3>Mick Schumacher</h3>
+            <p class="driver-series">World Endurance Championship • Alpine</p>
+            <p>
+              Transitioning into endurance racing, Schumacher is building momentum
+              with consistent pace and long-run discipline.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="highlights">
+        <div class="section-heading">
+          <p class="eyebrow">News & highlights</p>
+          <h2>What everyone is talking about</h2>
+          <p>
+            Catch up on paddock storylines, performance trends, and the moments
+            that define each race week.
+          </p>
+        </div>
+
+        <div class="highlight-list">
+          <article class="highlight-card">
+            <h3>Qualifying battles are tighter than ever</h3>
+            <p>
+              New aero packages and evolving tire strategies are shrinking the gap,
+              setting up dramatic sessions across multiple series.
+            </p>
+          </article>
+
+          <article class="highlight-card">
+            <h3>Street circuits bring early-season pressure</h3>
+            <p>
+              Drivers and teams face low-margin weekends where confidence, setup,
+              and clean execution matter as much as raw speed.
+            </p>
+          </article>
+
+          <article class="highlight-card live-highlight">
+            <div>
+              <p class="live-label">Live spotlight</p>
+              <h3 id="headline-title">Race-week buzz starts now</h3>
+            </div>
+            <button id="headline-button" class="button button-primary" type="button">
+              Rotate Headline
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built for fans who live for lights out, late braking, and checkered flags.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
